@@ -1,0 +1,445 @@
+<!doctype html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>林宏嘉 — 獲獎與基本資料</title>
+  <style>
+    :root{--bg:#0f1724;--muted:#9aa4b2;--accent:#6ee7b7}
+    body{margin:0;font-family: system-ui, "Noto Sans TC", sans-serif;background:#071025;color:#e6eef6;line-height:1.5}
+    .container{max-width:980px;margin:36px auto;padding:20px}
+    header{display:flex;gap:18px;align-items:center}
+    .avatar { width: 110px; height: 110px; border-radius: 16px; object-fit: cover; }
+    h1{margin:0;font-size:24px}
+    .subtitle{color:var(--muted);font-size:14px;margin-top:6px}
+    .grid{display:grid;grid-template-columns:1fr 360px;gap:20px;margin-top:22px}
+    @media (max-width:850px){.grid{grid-template-columns:1fr} .right-col{order:-1}}
+    .card{background:rgba(255,255,255,0.02);border-radius:12px;padding:16px}
+    .muted{color:var(--muted);font-size:13px}
+    dl{display:grid;grid-template-columns:120px 1fr;gap:8px 16px;align-items:center}
+    dt{color:var(--muted);font-size:13px}
+    dd{margin:0}
+    .controls{display:flex;gap:8px;flex-wrap:wrap;align-items:center;margin-bottom:12px}
+    input[type=search], select{padding:8px;border-radius:8px;border:1px solid rgba(255,255,255,0.06);background:rgba(255,255,255,0.05);color:inherit}
+    .award-list{display:grid;gap:12px}
+    .award{display:flex;gap:12px;padding:12px;border-radius:10px;background:rgba(255,255,255,0.03);align-items:flex-start;cursor:pointer}
+    .award .badge{min-width:64px;padding:8px;border-radius:8px;background:rgba(255,255,255,0.08);text-align:center;font-weight:700}
+    .award h3{margin:0;font-size:15px}
+    .award p{margin:6px 0 0;color:var(--muted);font-size:13px}
+    .modal{position:fixed;inset:0;background:rgba(0,0,0,0.75);display:none;align-items:center;justify-content:center;z-index:1000}
+    .modal-content{background:#0b1220;border-radius:12px;max-width:700px;max-height:90vh;overflow:auto;padding:20px;box-shadow:0 8px 32px rgba(0,0,0,0.6)}
+    .modal img{max-width:100%;border-radius:8px;margin-top:12px}
+    .close{float:right;font-size:20px;cursor:pointer;color:var(--muted)}
+     table{width:100%;border-collapse:collapse;margin-top:12px}
+     th,td{padding:8px 10px;border-bottom:1px solid rgba(255,255,255,0.08);text-align:left;font-size:14px}
+     th{color:var(--muted);font-weight:600}
+     footer{margin-top:24px;color:var(--muted);font-size:13px;text-align:center}
+  </style>
+</head>
+<body>
+  <div class="container">
+    <header>
+      <img class="avatar" src="林宏嘉_大頭照.jpg" alt="林宏嘉_大頭照" />
+      <div>
+        <h1>林宏嘉 <span class="muted">| 工程科學及海洋工程系</span></h1>
+        <div class="subtitle">專業：理工領域</div>
+      </div>
+    </header>
+
+    <div class="grid">
+      <main>
+<section class="card">
+  <h2>基本資料</h2>
+  <dl>
+    <dt>出生</dt><dd>2004/5/21 / 臺灣</dd>
+    <dt>學歷</dt>
+    <dd>
+      國立臺灣大學 工程科學及海洋工程學系（主修科系）<br>
+      國立臺灣科技大學 智慧財產權學士學位學程（跨校輔系）
+    </dd>
+
+    <dt>聯絡</dt>
+    <dd>b11505030@ntu.edu.tw · +886-988-747-804</dd>
+
+    <dt>專長</dt>
+    <dd>半導體、製程、光學、電子電路電磁、控制系統、資料結構</dd>
+
+    <dt>學分學程</dt>
+    <dd>奈米科技學分學程<br>
+        台積電 半導體學程<br>
+        台積電 前瞻電路學分學程
+</dd>
+
+    <dt>臺大領域專長</dt>
+    <dd>工學院 光機電領域</dd>
+  </dl>
+</section>
+
+        <section class="card" style="margin-top:16px">
+          <h2>競賽與獲獎紀錄</h2>
+          <div class="controls">
+            <input type="search" id="q" placeholder="搜尋獲獎名稱或關鍵字" />
+            <select id="yearFilter">
+              <option value="all">全年份</option>
+              <option>2025</option>
+              <option>2024</option>
+              <option>2023</option>
+              <option value="none">收起</option>
+            </select>
+          </div>
+
+          <div class="award-list" id="awardList">
+            <article class="award" data-year="2025" data-title="台積電暑期實習傑出實習生獎 · 2025" data-desc="實習期間在PVD部門協助薄膜沉積製成缺陷改善improve yeild loss" data-img="award1.jpg">
+              <div class="badge">學術</div>
+              <div>
+                <h3>台積電 傑出實習生獎 · 2025</h3>
+                <p>薄膜沉積製成缺陷改善improve yeild loss</p>
+              </div>
+            </article>
+
+            <article class="award" data-year="2025" data-title="TSMC F15B summer internship workshop 暑期專案 第二名 · 2024" data-desc="台積電暑期實習 個人專案 [P126 ECP hollow via defect improve - Utilizing AI Big Data] " data-img="award_tsmc_2.JPG">
+              <div class="badge">學術</div>
+              <div>
+                <h3>暑期專案 專題發表 第二名 · 2025</h3>
+                <p>製程缺陷改善 Hollow via defect improve </p>
+              </div>
+            </article>
+
+            <article class="award" data-year="2025" data-title="TSMC 2025 DNA Summer Internship · 2025" data-desc="台積電暑期實習 結訓證書" data-img="award_tsmc_cirti.JPG">
+              <div class="badge">實習</div>
+              <div>
+                <h3>TSMC 2025 DNA Summer Internship · 2025</h3>
+                <p>台積電暑期實習 結訓證書 </p>
+              </div>
+            </article>
+
+            <article class="award" data-year="2024" data-title="系學會幹部嘉獎 · 2024" data-desc="擔任系學會副會長，組織系內活動並提升學生滿意度。" data-img="department_award_113.png">
+              <div class="badge">榮譽</div>
+              <div>
+                <h3>系學會幹部嘉獎 · 2024</h3>
+                <p>擔任系學會新生部長。</p>
+              </div>
+            </article>
+
+            <article class="award" data-year="2024" data-title="臺大全校運動會游泳競賽 · 2024" data-desc="男子組 個人仰式50公尺 第18名" data-img="award_swim_18.JPG">
+              <div class="badge">競技</div>
+              <div>
+                <h3>113年 臺大全校運動會游泳競賽 · 2024</h3>
+                <p>游泳競賽</p>
+              </div>
+            </article>
+
+
+            <article class="award" data-year="2024" data-title="臺大全校運動會游泳競賽 · 2024" data-desc="工科海洋系 游泳大隊接力400公尺 第四名" data-img="award_swim_4.JPG">
+              <div class="badge">競技</div>
+              <div>
+                <h3>113年 臺大全校運動會游泳競賽 · 2024</h3>
+                <p>游泳競賽</p>
+              </div>
+            </article>
+
+            <article class="award" data-year="2023" data-title="臺大111學年 校園馬拉松 · 2023" data-desc="男子組 完賽" data-img="Marathon_111.JPG">
+              <div class="badge">競技</div>
+              <div>
+                <h3>111年 臺大校園馬拉松 · 2023</h3>
+                <p>游泳競賽</p>
+              </div>
+            </article>
+
+            <article class="award" data-year="2023" data-title="臺大112學年 校園馬拉松 · 2024" data-desc="男子組 完賽" data-img="Marathon_112.JPG">
+              <div class="badge">競技</div>
+              <div>
+                <h3>112年 臺大校園馬拉松 · 2024</h3>
+                <p>游泳競賽</p>
+              </div>
+            </article>
+
+            <article class="award" data-year="2025" data-title="臺大113學年 校園馬拉松 · 2025" data-desc="男子組 完賽" data-img="Marathon_113.JPG">
+              <div class="badge">競技</div>
+              <div>
+                <h3>113年 臺大校園馬拉松 · 2025</h3>
+                <p>游泳競賽</p>
+              </div>
+            </article>
+
+            <article class="award" data-year="2022" data-title="台中市110年度 畢業生市長獎 · 2022" data-desc="市長獎" data-img="Senior_high_graduate_award.JPG">
+              <div class="badge">學術</div>
+              <div>
+                <h3>110年 畢業生市長獎 · 2022</h3>
+                <p>學業獎狀</p>
+              </div>
+            </article>
+
+            <article class="award" data-year="2022" data-title="TOEIC 英文檢定 · 2022" data-desc="TOEIC 740" data-img="TOEIC_740.JPG">
+              <div class="badge">語言</div>
+              <div>
+                <h3>TOEIC 740 · 2022</h3>
+                <p>檢定證書</p>
+              </div>
+            </article>
+
+            <article class="award" data-year="2022" data-title="CEPT 中文檢定 · 2022" data-desc="CEPT 中級" data-img="CEPT_intermidiate.JPG">
+              <div class="badge">語言</div>
+              <div>
+                <h3>CEPT 中級 · 2022</h3>
+                <p>檢定證書</p>
+              </div>
+            </article>
+
+            <article class="award" data-year="2022" data-title="河合鋼琴 檢定測驗 古典鋼琴9級 · 2022" data-desc="市長獎" data-img="Piano_classic9.JPG">
+              <div class="badge">才藝</div>
+              <div>
+                <h3>古典鋼琴9級 · 2022</h3>
+                <p>檢定證書</p>
+              </div>
+            </article>
+
+            <article class="award" data-year="2022" data-title="PRAGUE GRADE EXAMINATION Jazz Piano Grade 8 · 2022" data-desc="爵士鋼琴8級" data-img="Piano_jazz8.JPG">
+              <div class="badge">才藝</div>
+              <div>
+                <h3>爵士鋼琴8級 · 2022</h3>
+                <p>檢定證書</p>
+              </div>
+            </article>
+
+            <article class="award" data-year="2022" data-title="熱心捐血 感謝狀 · 2022" data-desc="感謝狀" data-img="Blood_award.JPG">
+              <div class="badge">榮譽</div>
+              <div>
+                <h3>台中捐血中心 感謝狀 · 2022</h3>
+                <p>感謝狀</p>
+              </div>
+            </article>
+
+          </div>
+          <button id="toggleAwards" style="padding:8px 12px; border-radius:8px; border:none; background: linear-gradient(45deg, #00aaff, #1e90ff); color:#071025; cursor:pointer; margin-top:12px; box-shadow: 0 4px 8px rgba(0, 170, 255, 0.2); transition: background 0.3s ease;">
+           顯示更多
+          </button>
+        </section>
+
+      <section class="card" style="margin-top:16px">
+       <h2>社團經歷</h2>
+        <img src="club_cirtificate_1.jpg" alt="社團經歷證明照片" style="max-width:100%;border-radius:8px;margin-bottom:12px" />
+       <table>
+       <thead>
+    <tr>
+     <th>學年期</th>
+     <th>社團名稱</th>
+     <th>身分</th>
+     <th>職稱</th>
+    </tr>
+</thead>
+<tbody>
+          <tr><td>112-1</td><td>工程科學及海洋工程學系學生會</td><td>幹部</td><td>新生部長</td></tr>
+           <tr><td>112-2</td><td>慈幼會社區服務團</td><td>幹部</td><td>行政副社</td></tr>
+           <tr><td>112-2</td><td>工程科學及海洋工程學系學生會</td><td>幹部</td><td>新生部長</td></tr>
+           <tr><td>113-1</td><td>慈幼會社區服務團</td><td>社員</td><td></td></tr>
+           <tr><td>113-1</td><td>工程科學及海洋工程學系學生會</td><td>幹部</td><td>副會長</td></tr>
+           <tr><td>113-2</td><td>慈幼會社區服務團</td><td>社員</td><td></td></tr>
+           <tr><td>113-2</td><td>工程科學及海洋工程學系學生會</td><td>幹部</td><td>副會長</td></tr>
+           <tr><td>114-1</td><td>慈幼會社區服務團</td><td>社員</td><td></td></tr>
+       </tbody>
+    </table>
+</section>
+
+<section class="card" style="margin-top:16px">
+  <h2>課程與專長</h2>
+
+  <h3>基礎科目</h3>
+  <ul>
+    <li>微積分 1–4</li>
+    <li>普通物理學甲 上/下（含實驗）</li>
+    <li>普通化學丙（含實驗）</li>
+    <li>工程數學一、二、三（微分方程、傅立葉轉換、線性代數）</li>
+  </ul>
+
+  <h3>三電</h3>
+  <ul>
+    <li>電子電路一、二</li>
+    <li>電磁學</li>
+  </ul>
+
+  <h3>選修</h3>
+  <ul>
+    <li>近代物理</li>
+    <li>基礎光學</li>
+    <li>奈米電子導論</li>
+    <li>材料科學</li>
+    <li>邏輯電路</li>
+    <li>信號與系統</li>
+    <li>固態電子學 (114-1)</li>
+    <li>數位控制系統</li>
+    <li>電子顯微鏡學 (114-1)</li>
+    <li>自動控制</li>
+    <li>物件導向程式語言</li>
+    <li>資料結構</li>
+    <li>高功率半導體元件設計分析 (114-1)</li>
+  </ul>
+
+  <h3>智慧財產權學程</h3>
+  <ul>
+    <li>專利制度入門與基礎</li>
+    <li>智慧財產權之侵害與救濟</li>
+    <li>人工智慧規範與治理</li>
+    <li>專利文件解讀</li>
+    <li>美國專利申請實務</li>
+    <li>民法</li>
+  </ul>
+
+  <h3>元件/光電相關課程（碩士專注研究）</h3>
+  <p><strong>基礎：</strong> 固態電子學、近代物理、奈米電子導論</p>
+  <p><strong>進階：</strong> 電磁學、基礎光學、材料科學、信號與系統</p>
+  <p><strong>碩士班課程：</strong> 高功率半導體元件設計分析、電子顯微鏡學</p>
+
+<button id="proofBtn" style="padding:8px 12px; border-radius:8px; border:none; background:var(--accent); color:#071025; cursor:pointer; margin-top:12px;">
+  證明
+</button>
+
+</section>
+
+
+<!-- 新增 修課證明 -->
+<div class="modal" id="proofModal">
+  <div class="modal-content">
+    <span class="close" id="proofClose">×</span>
+    <h2>修課證明</h2>
+    <p>以下為修課紀錄：</p>
+    <img src="course_record_1.png" alt="修課紀錄1" style="max-width:100%; border-radius:8px; margin-top:12px;" />
+    <img src="course_record_2.png" alt="修課紀錄2" style="max-width:100%; border-radius:8px; margin-top:12px;" />
+    <img src="course_record_3.png" alt="修課紀錄3" style="max-width:100%; border-radius:8px; margin-top:12px;" />
+    <img src="course_record_4.png" alt="修課紀錄4" style="max-width:100%; border-radius:8px; margin-top:12px;" />
+    <img src="course_record_5.png" alt="修課紀錄5" style="max-width:100%; border-radius:8px; margin-top:12px;" />
+    <li>114-1學期 修課列表</li>
+    <img src="course_record_6.png" alt="114-1修課列表" style="max-width:100%; border-radius:8px; margin-top:12px;" />
+  </div>
+</div>
+
+
+</main>
+
+      </main>
+
+      <aside class="right-col">
+  <div class="card">
+    <h3>簡短自介</h3>
+    <p class="muted">
+      「"Because it is there." 」<br>
+      勇於接受新的挑戰，不斷追求創新。從小到大我並非一帆風順，
+      但每一個階段我總是能不斷突破自己去追求更上一層的目標。
+      就像爬上「玉山」一樣，雖然中途經歷了許多不適，
+      最後還是能為了目標攀登上臺灣的頂端。
+    </p>
+    <img src="Mt_jade_LIN.JPG" alt="林宏嘉 簡短自介照片" style="width:100%; border-radius:8px; margin-top:12px;" />
+  </div>
+  <br>
+  <div class="card">
+    <h3>歷年系排名</h3>
+    <p class="muted">
+      Chart Data
+    </p>
+    <img src="ranking_department.png" alt="林宏嘉 系排名" style="width:100%; border-radius:8px; margin-top:12px;" />
+
+    <h3>歷年GPA</h3>
+    <p class="muted">
+      Chart Data
+    </p>
+    <img src="gpa_ranking.png" alt="林宏嘉 GPA" style="width:100%; border-radius:8px; margin-top:12px;" />
+
+    <h3>歷年成績表格</h3>
+    <p class="muted">
+      Chart Data
+    </p>
+    <img src="raw_data_ranking.png" alt="林宏嘉 grade" style="width:100%; border-radius:8px; margin-top:12px;" />
+
+  </div>
+
+</aside>
+    </div>
+
+    <footer>© 林宏嘉 · 最後更新：2025-09-14</footer>
+  </div>
+
+  <!-- 獎狀 Modal -->
+  <div class="modal" id="modal">
+    <div class="modal-content">
+      <span class="close" id="closeBtn">×</span>
+      <h2 id="modalTitle"></h2>
+      <p id="modalDesc"></p>
+      <img id="modalImg" alt="獎狀照片" />
+    </div>
+  </div>
+
+  <!-- 修課證明 Modal -->
+  <div class="modal" id="proofModal">
+    <div class="modal-content">
+      <span class="close" id="proofClose">×</span>
+      <h2>修課證明</h2>
+      <p>以下為部分修課紀錄照片：</p>
+      <img src="course_record_1.jpg" alt="修課紀錄1" />
+      <img src="course_record_2.jpg" alt="修課紀錄2" />
+    </div>
+  </div>
+
+ <script>
+    const q=document.getElementById('q');
+    const yearFilter=document.getElementById('yearFilter');
+    const awardList=document.getElementById('awardList');
+    const modal=document.getElementById('modal');
+    const modalTitle=document.getElementById('modalTitle');
+    const modalDesc=document.getElementById('modalDesc');
+    const modalImg=document.getElementById('modalImg');
+    const closeBtn=document.getElementById('closeBtn');
+    const toggleBtn=document.getElementById('toggleAwards');
+
+    let expanded=false;
+
+    function refresh(){
+      const kw=q.value.trim().toLowerCase();
+      const year=yearFilter.value;
+      const awards=Array.from(awardList.children);
+      let visibleCount=0;
+      awards.forEach((it)=>{
+        const text=(it.textContent||'').toLowerCase();
+        const y=it.getAttribute('data-year')||'';
+        const match=(!kw||text.includes(kw))&&(year==='all'||y===year);
+        if(match){
+          if(!expanded && visibleCount>=3){
+            it.style.display='none';
+          }else{
+            it.style.display='flex';
+          }
+          visibleCount++;
+        }else{
+          it.style.display='none';
+        }
+      });
+      toggleBtn.style.display=(visibleCount>3)?'block':'none';
+      toggleBtn.textContent=expanded?'收起':'顯示更多';
+    }
+
+    q.addEventListener('input',refresh);
+    yearFilter.addEventListener('change',refresh);
+    toggleBtn.addEventListener('click',()=>{expanded=!expanded;refresh();});
+
+    awardList.addEventListener('click',e=>{
+      const card=e.target.closest('.award');
+      if(!card)return;
+      modalTitle.textContent=card.dataset.title;
+      modalDesc.textContent=card.dataset.desc;
+      modalImg.src=card.dataset.img;
+      modal.style.display='flex';
+    });
+    closeBtn.onclick=()=>modal.style.display='none';
+    modal.onclick=e=>{if(e.target===modal)modal.style.display='none'};
+
+    // 修課證明
+    const proofBtn = document.getElementById('proofBtn');
+    const proofModal = document.getElementById('proofModal');
+    const proofClose = document.getElementById('proofClose');
+    proofBtn.onclick = () => proofModal.style.display = 'flex';
+    proofClose.onclick = () => proofModal.style.display = 'none';
+    proofModal.onclick = (e) => { if(e.target===proofModal) proofModal.style.display='none'; };
+
+    refresh(); // 初始刷新
+  </script>
+</body>
+</html>
