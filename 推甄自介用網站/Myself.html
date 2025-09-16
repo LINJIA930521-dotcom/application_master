@@ -27,7 +27,6 @@
     .award h3{margin:0;font-size:15px}
     .award p{margin:6px 0 0;color:var(--muted);font-size:13px}
     .modal{position:fixed;inset:0;background:rgba(0,0,0,0.75);display:none;align-items:center;justify-content:center;z-index:1000}
-    .modal-content{background:#0b1220;border-radius:12px;max-width:700px;max-height:90vh;overflow:auto;padding:20px;box-shadow:0 8px 32px rgba(0,0,0,0.6)}
     .modal img{max-width:100%;border-radius:8px;margin-top:12px}
     .close{float:right;font-size:20px;cursor:pointer;color:var(--muted)}
      table{width:100%;border-collapse:collapse;margin-top:12px}
@@ -35,7 +34,42 @@
      th{color:var(--muted);font-weight:600}
      footer{margin-top:24px;color:var(--muted);font-size:13px;text-align:center}
      small {font-size: 13px;color: #777; margin-left: 6px; }
-  </style>
+.other-files ul {
+      list-style: none;
+      padding-left: 0;
+    }
+    .other-files li {
+      margin-bottom: 10px;
+    }
+    .other-files a {
+      text-decoration: none;
+      color: #2980b9;
+      font-weight: bold;
+    }
+    .other-files a:hover {
+      text-decoration: underline;}
+
+  .preview-btn {
+    margin-left: 12px;
+    padding: 4px 10px;
+    background-color: #007acc;
+    color: white;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+  }
+  .preview-btn:hover { background-color: #005fa3; }
+
+
+    /* Modal 通用樣式 */
+    .modal {display: none;position: fixed; z-index: 1000; left: 0; top: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.6); align-items:center; justify-content:center; }
+    .modal-content {background: #0b1220; border-radius: 12px; max-width: 700px; max-height: 90vh; overflow:auto; padding: 20px; box-shadow: 0 8px 32px rgba(0,0,0,0.6); color:#e6eef6; position:relative; }
+    .modal-content img{max-width:100%; border-radius:8px; margin-top:12px; object-fit: contain;}
+    .close, .close-btn {position:absolute; top:12px; right:12px; font-size:24px; cursor:pointer; color:var(--muted);}
+    .pdf-modal .modal-content {max-width:90%; max-height:90%; width:80%; height:80%; padding:0; display:flex; flex-direction:column;}
+    .pdf-modal iframe {width:100%; height:100%; border:none; border-radius:0 0 8px 8px;}
+
+</style>
 </head>
 <body>
   <div class="container">
@@ -322,8 +356,47 @@
   </div>
 </div>
 
+<section class="card other-files" style="margin-top:16px">
+        <h2>其他資料</h2>
+        <ul>
+          <li>
+            About Me 自我介紹
+            <button class="preview-btn" data-file="About Me(ppt).pdf">預覽</button>
+            <a href="About Me(ppt).pdf" target="_blank">下載</a>
+          </li>
+          <li>
+            工科海工專論 波浪發電機 研發專案
+            <button class="preview-btn" data-file="工科海工專論_期末報告.pdf">預覽</button>
+            <a href="工科海工專論_期末報告.pdf" target="_blank">下載</a>
+          </li>
+          <li>
+            物件導向程式語言 Youbike系統建置
+            <button class="preview-btn" data-file="Youbike系統建置.pdf">預覽</button>
+            <a href="Youbike系統建置.pdf" target="_blank">下載</a>
+          </li>
+          <li>
+            奈米電子導論 矽光子技術平台之發展現況與未來
+            <button class="preview-btn" data-file="NE_final report.pdf">預覽</button>
+            <a href="NE_final report.pdf" target="_blank">下載</a>
+          </li>
+          <li>
+            臺大引路人計畫 台積電 實習心得
+            <button class="preview-btn" data-file="臺大引路人計畫_台積電實習總心得.pdf">預覽</button>
+            <a href="臺大引路人計畫_台積電實習總心得.pdf" target="_blank">下載</a>
+          </li>
+          <li>
+            智慧財產侵害救濟 民事判決解析
+            <button class="preview-btn" data-file="智慧財產侵害救濟實務.pdf">預覽</button>
+            <a href="智慧財產侵害救濟實務.pdf" target="_blank">下載</a>
+          </li>
+          <li>
+            AI 規範「從 OECD 國際合作平台探討歐盟 AI 與臺灣治理」
+            <button class="preview-btn" data-file="人工智慧規範與治理.pdf">預覽</button>
+            <a href="人工智慧規範與治理報告.pdf" target="_blank">下載</a>
+          </li>
+        </ul>
+      </section>
 
-</main>
 
       </main>
 
@@ -364,7 +437,7 @@
 </aside>
     </div>
 
-    <footer>© 林宏嘉 · 最後更新：2025-09-14</footer>
+    <footer>© 林宏嘉 · 最後更新：2025-09-16</footer>
   </div>
 
   <!-- 獎狀 Modal -->
@@ -388,46 +461,66 @@
     </div>
   </div>
 
- <script>
+  <!-- PDF 預覽 Modal -->
+  <div class="modal pdf-modal" id="pdfModal">
+    <div class="modal-content">
+      <span class="close-btn">×</span>
+      <iframe id="pdfViewer"></iframe>
+    </div>
+  </div>
+
+  <script>
     const q=document.getElementById('q');
     const yearFilter=document.getElementById('yearFilter');
     const awardList=document.getElementById('awardList');
+    const toggleAwards = document.getElementById('toggleAwards');
     const modal=document.getElementById('modal');
     const modalTitle=document.getElementById('modalTitle');
     const modalDesc=document.getElementById('modalDesc');
     const modalImg=document.getElementById('modalImg');
     const closeBtn=document.getElementById('closeBtn');
-    const toggleBtn=document.getElementById('toggleAwards');
 
-    let expanded=false;
+function collapseAwards() {
+  const awards = Array.from(awardList.querySelectorAll('.award'));
+  awards.forEach((award, index) => {
+    award.style.display = (index < 3) ? 'flex' : 'none';
+  });
+  if (awards.length <= 3) {
+    toggleAwards.style.display = 'none';
+  } else {
+    toggleAwards.style.display = 'inline-block';
+    toggleAwards.textContent = '顯示更多';
+  }
+}
+
+// 頁面載入時先摺疊前三個
+collapseAwards();
+
+toggleAwards.addEventListener('click', () => {
+  const awards = Array.from(awardList.querySelectorAll('.award'));
+  const hidden = awards.filter(a => a.style.display === 'none');
+  if (hidden.length > 0) {
+    // 展開全部
+    awards.forEach(a => a.style.display = 'flex');
+    toggleAwards.textContent = '收起';
+  } else {
+    // 收回前三個
+    collapseAwards();
+  }
+});
 
     function refresh(){
       const kw=q.value.trim().toLowerCase();
       const year=yearFilter.value;
-      const awards=Array.from(awardList.children);
-      let visibleCount=0;
-      awards.forEach((it)=>{
+      Array.from(awardList.children).forEach(it=>{
         const text=(it.textContent||'').toLowerCase();
         const y=it.getAttribute('data-year')||'';
         const match=(!kw||text.includes(kw))&&(year==='all'||y===year);
-        if(match){
-          if(!expanded && visibleCount>=3){
-            it.style.display='none';
-          }else{
-            it.style.display='flex';
-          }
-          visibleCount++;
-        }else{
-          it.style.display='none';
-        }
+        it.style.display=match?'flex':'none';
       });
-      toggleBtn.style.display=(visibleCount>3)?'block':'none';
-      toggleBtn.textContent=expanded?'收起':'顯示更多';
     }
-
     q.addEventListener('input',refresh);
     yearFilter.addEventListener('change',refresh);
-    toggleBtn.addEventListener('click',()=>{expanded=!expanded;refresh();});
 
     awardList.addEventListener('click',e=>{
       const card=e.target.closest('.award');
@@ -440,7 +533,6 @@
     closeBtn.onclick=()=>modal.style.display='none';
     modal.onclick=e=>{if(e.target===modal)modal.style.display='none'};
 
-    // 修課證明
     const proofBtn = document.getElementById('proofBtn');
     const proofModal = document.getElementById('proofModal');
     const proofClose = document.getElementById('proofClose');
@@ -448,10 +540,27 @@
     proofClose.onclick = () => proofModal.style.display = 'none';
     proofModal.onclick = (e) => { if(e.target===proofModal) proofModal.style.display='none'; };
 
-    refresh(); // 初始刷新
+    const pdfModal = document.getElementById('pdfModal');
+    const pdfViewer = document.getElementById('pdfViewer');
+    const pdfClose = pdfModal.querySelector('.close-btn');
+
+    document.querySelectorAll('.preview-btn').forEach(btn => {
+      btn.addEventListener('click', () => {
+        const file = btn.getAttribute('data-file');
+        pdfViewer.src = file;
+        pdfModal.style.display = 'flex';
+      });
+    });
+    pdfClose.addEventListener('click', () => {
+      pdfModal.style.display = 'none';
+      pdfViewer.src = '';
+    });
+    pdfModal.addEventListener('click', (e) => {
+      if(e.target === pdfModal) {
+        pdfModal.style.display = 'none';
+        pdfViewer.src = '';
+      }
+    });
   </script>
 </body>
-
 </html>
-
-
