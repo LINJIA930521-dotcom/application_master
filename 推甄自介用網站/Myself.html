@@ -105,6 +105,8 @@
     .pdf-modal .modal-content {max-width:90%; max-height:90%; width:80%; height:80%; padding:0; display:flex; flex-direction:column;}
     .pdf-modal iframe {width:100%; height:100%; border:none; border-radius:0 0 8px 8px;}
 
+
+
 </style>
 </head>
 <body>
@@ -480,6 +482,16 @@
             <button class="preview-btn" data-file="cert國際生接待志工_2025091815.pdf">預覽</button>
             <a href="cert國際生接待志工_2025091815.pdf" target="_blank">下載</a>
           </li>
+          <li>
+            歷年成績單 111-1學期~113-2學期
+            <button class="preview-btn" data-file="歷年成績單113-2.jpg">預覽</button>
+            <a href="歷年成績單113-2.jpg" target="_blank">下載</a>
+          </li>
+          <li>
+            推甄名次證明書
+            <button class="preview-btn" data-file="推甄名次證明書.jpg">預覽</button>
+            <a href="推甄名次證明書.jpg" target="_blank">下載</a>
+          </li>
         </ul>
       </section>
 </section>
@@ -578,154 +590,142 @@
     </div>
   </div>
 
-  <script>
-    const q=document.getElementById('q');
-    const yearFilter=document.getElementById('yearFilter');
-    const categoryFilter = document.getElementById('categoryFilter');
-    const awardList=document.getElementById('awardList');
-    const toggleAwards = document.getElementById('toggleAwards');
-    const modal=document.getElementById('modal');
-    const modalTitle=document.getElementById('modalTitle');
-    const modalDesc=document.getElementById('modalDesc');
-    const modalImg=document.getElementById('modalImg');
-    const closeBtn=document.getElementById('closeBtn');
-    
-    let expanded = false;
+  <!-- 圖片 Modal -->
+  <div id="imgModal" class="modal">
+    <span id="imgClose" class="close-btn">&times;</span>
+    <img id="modalImg" />
+    <div id="modalTitle"></div>
+  </div>
 
-    // refresh: 負責篩選 關鍵字/年份/類別 並且套用, 只顯示前三筆除非expanded掉~~~~
-    function refresh() {
-      const kw = q.value.trim().toLowerCase();
-      const year = yearFilter.value;
-      const category = categoryFilter.value;
+<script>
+  const q=document.getElementById('q');
+  const yearFilter=document.getElementById('yearFilter');
+  const categoryFilter = document.getElementById('categoryFilter');
+  const awardList=document.getElementById('awardList');
+  const toggleAwards = document.getElementById('toggleAwards');
 
-      const awards = Array.from(awardList.querySelectorAll('.award'));
+  // 圖片 Modal
+  const modal=document.getElementById('modal');
+  const modalTitle=document.getElementById('modalTitle');
+  const modalDesc=document.getElementById('modalDesc');
+  const modalImg=document.getElementById('modalImg');
+  const closeBtn=document.getElementById('closeBtn');
 
-      // 找出所有符合條件的項目
-      const matches = awards.filter(it => {
-        const text = (it.textContent || '').toLowerCase();
-        const y = it.getAttribute('data-year') || '';
-        const c = it.getAttribute('data-category') || '';
+  // PDF Modal
+  const pdfModal = document.getElementById('pdfModal');
+  const pdfViewer = document.getElementById('pdfViewer');
+  const pdfClose = pdfModal ? pdfModal.querySelector('.close-btn') : null;
 
-        const matchKw = !kw || text.includes(kw);
-        const matchYear = (year === 'all' || y === year);
-        const matchCategory = (category === 'all' || c === category);
+  let expanded = false;
 
-        return matchKw && matchYear && matchCategory;
-      });
+  // refresh: 篩選邏輯
+  function refresh() {
+    const kw = q.value.trim().toLowerCase();
+    const year = yearFilter.value;
+    const category = categoryFilter.value;
+    const awards = Array.from(awardList.querySelectorAll('.award'));
 
-      // 先全部隱藏
-      awards.forEach(it => it.style.display = 'none');
-
-      if (!expanded) {
-        // 預設只顯示前三筆符合的
-        matches.slice(0, 3).forEach(it => it.style.display = 'flex');
-        // toggle 按鈕只在符合數 > 3 時顯示
-        if (matches.length > 3) {
-          toggleAwards.style.display = 'inline-block';
-          toggleAwards.textContent = '顯示更多';
-        } else {
-          toggleAwards.style.display = matches.length === 0 ? 'none' : 'none';
-          // 只有 1~3 筆，沒必要顯示按鈕
-        }
-      } else {
-        // 展開全部符合項目
-        matches.forEach(it => it.style.display = 'flex');
-        toggleAwards.style.display = matches.length > 3 ? 'inline-block' : 'none';
-        toggleAwards.textContent = '收起';
-      }
-    }
-
-    // 初始呼叫：收合前三筆
-    expanded = false;
-    refresh();
-
-    // 當搜尋 / 篩選改變時，回到收合狀態並 refresh
-    q.addEventListener('input', () => { expanded = false; refresh(); });
-    yearFilter.addEventListener('change', () => { expanded = false; refresh(); });
-    categoryFilter.addEventListener('change', () => { expanded = false; refresh(); });
-
-    // 顯示更多 按鈕
-    toggleAwards.addEventListener('click', () => {
-      expanded = !expanded;
-      refresh();
-      // 如果展開時，滾動到按鈕上方讓使用者看得到更多內容（可選）
-      if (expanded) toggleAwards.scrollIntoView({ behavior: 'smooth', block: 'center' });
+    const matches = awards.filter(it => {
+      const text = (it.textContent || '').toLowerCase();
+      const y = it.getAttribute('data-year') || '';
+      const c = it.getAttribute('data-category') || '';
+      return (!kw || text.includes(kw)) &&
+             (year === 'all' || y === year) &&
+             (category === 'all' || c === category);
     });
 
-    // 點擊 award 顯示 modal（共用 modal）
-    awardList.addEventListener('click', e => {
-      const card = e.target.closest('.award');
-      if (!card) return;
-      modalTitle.textContent = card.dataset.title || '';
-      modalDesc.textContent = card.dataset.desc || '';
-      modalImg.src = card.dataset.img || '';
+    awards.forEach(it => it.style.display = 'none');
+
+    if (!expanded) {
+      matches.slice(0, 3).forEach(it => it.style.display = 'flex');
+      toggleAwards.style.display = matches.length > 3 ? 'inline-block' : 'none';
+      toggleAwards.textContent = '顯示更多';
+    } else {
+      matches.forEach(it => it.style.display = 'flex');
+      toggleAwards.style.display = matches.length > 3 ? 'inline-block' : 'none';
+      toggleAwards.textContent = '收起';
+    }
+  }
+
+  // 初始化
+  expanded = false;
+  refresh();
+
+  q.addEventListener('input', () => { expanded = false; refresh(); });
+  yearFilter.addEventListener('change', () => { expanded = false; refresh(); });
+  categoryFilter.addEventListener('change', () => { expanded = false; refresh(); });
+
+  toggleAwards.addEventListener('click', () => {
+    expanded = !expanded;
+    refresh();
+    if (expanded) toggleAwards.scrollIntoView({ behavior: 'smooth', block: 'center' });
+  });
+
+  // 點擊 award → 顯示圖片 modal
+  awardList.addEventListener('click', e => {
+    const card = e.target.closest('.award');
+    if (!card) return;
+    modalTitle.textContent = card.dataset.title || '';
+    modalDesc.textContent = card.dataset.desc || '';
+    modalImg.src = card.dataset.img || '';
+    modal.style.display = 'flex';
+  });
+
+  // 點擊右側 zoomable 圖片
+  document.querySelectorAll('.zoomable').forEach(img => {
+    img.addEventListener('click', () => {
+      modalImg.src = img.src;
+      modalTitle.innerText = img.dataset.title || '';
       modal.style.display = 'flex';
     });
+  });
 
-    // 點擊可放大的圖片(右側自傳等)
-    document.querySelectorAll('.zoomable').forEach(img => {
-      img.addEventListener('click', () => {
-        modalImg.src = img.src;
-        modalTitle.innerText = img.dataset.title || '';
-        modal.style.display = 'flex';
-      });
-    });
+  // 關閉圖片 modal
+  closeBtn.onclick = () => modal.style.display = 'none';
+  modal.onclick = e => { if (e.target === modal) modal.style.display = 'none'; };
 
+  // 修課 modal
+  const proofBtn = document.getElementById('proofBtn');
+  const proofModal = document.getElementById('proofModal');
+  const proofClose = document.getElementById('proofClose');
+  if (proofBtn && proofModal && proofClose) {
+    proofBtn.onclick = () => proofModal.style.display = 'flex';
+    proofClose.onclick = () => proofModal.style.display = 'none';
+    proofModal.onclick = (e) => { if (e.target === proofModal) proofModal.style.display = 'none'; };
+  }
 
-    // 關閉 modal
-    closeBtn.onclick = () => modal.style.display = 'none';
-    modal.onclick = e => { if (e.target === modal) modal.style.display = 'none'; };
+  // 預覽按鈕（圖片 / PDF 分開處理）
+  document.querySelectorAll('.preview-btn').forEach(btn => {
+    btn.addEventListener('click', () => {
+      const file = btn.getAttribute('data-file');
+      if (!file) return;
 
-    // 修課 modal btn
-    const proofBtn = document.getElementById('proofBtn');
-    const proofModal = document.getElementById('proofModal');
-    const proofClose = document.getElementById('proofClose');
-    if (proofBtn && proofModal && proofClose) {
-      proofBtn.onclick = () => proofModal.style.display = 'flex';
-      proofClose.onclick = () => proofModal.style.display = 'none';
-      proofModal.onclick = (e) => { if (e.target === proofModal) proofModal.style.display = 'none'; };
-    }
-
-    // PDF preview
-    const pdfModal = document.getElementById('pdfModal');
-    const pdfViewer = document.getElementById('pdfViewer');
-    const pdfClose = pdfModal ? pdfModal.querySelector('.close-btn') : null;
-
-    document.querySelectorAll('.preview-btn').forEach(btn => {
-      btn.addEventListener('click', () => {
-        const file = btn.getAttribute('data-file');
-        if (!file) return;
+      if (file.toLowerCase().endsWith('.pdf')) {
+        // PDF 檔案
         pdfViewer.src = file;
         pdfModal.style.display = 'flex';
-      });
+      } else if (/\.(jpg|jpeg|png|gif)$/i.test(file)) {
+        // 圖片檔案
+        modalImg.src = file;
+        modalTitle.textContent = btn.parentElement.textContent.trim();
+        modal.style.display = 'flex';
+      }
     });
-    if (pdfClose) {
-      pdfClose.addEventListener('click', () => {
+  });
+
+  // 關閉 PDF modal
+  if (pdfClose) {
+    pdfClose.addEventListener('click', () => {
+      pdfModal.style.display = 'none';
+      pdfViewer.src = '';
+    });
+    pdfModal.addEventListener('click', (e) => {
+      if (e.target === pdfModal) {
         pdfModal.style.display = 'none';
         pdfViewer.src = '';
-      });
-      pdfModal.addEventListener('click', (e) => {
-        if (e.target === pdfModal) {
-          pdfModal.style.display = 'none';
-          pdfViewer.src = '';
-        }
-      });
-    }
-
-  </script>
+      }
+    });
+  }
+</script>
 </body>
 </html>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
