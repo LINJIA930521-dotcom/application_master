@@ -60,6 +60,41 @@
   }
   .preview-btn:hover { background-color: #005fa3; }
 
+    .navbar {
+      position: sticky;
+      top: 0;
+      background: #071025;
+      padding: 10px;
+      z-index: 1000;
+    }
+    .nav-container {
+      display: flex;
+      justify-content: center;
+      gap: 20px;
+    }
+    .nav-container a {
+      color: #fff;
+      text-decoration: none;
+      font-weight: bold;
+      transition: color 0.3s;
+    }
+    .nav-container a:hover {
+      color: #00aaff;
+    }
+
+.controls input,
+.controls select {
+  color: #071025;           /* 深字 */
+  background-color: #f5f5f5; /* 淺背景 */
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  padding: 6px 8px;
+  margin-left: 8px;
+  font-size: 14px;
+}
+.controls input {
+  margin-left: 0; /* 第一個 input 不需要 margin-left */
+}
 
     /* Modal 通用樣式 */
     .modal {display: none;position: fixed; z-index: 1000; left: 0; top: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.6); align-items:center; justify-content:center; }
@@ -72,6 +107,18 @@
 </style>
 </head>
 <body>
+
+  <!-- 導覽列 -->
+  <nav class="navbar">
+    <div class="nav-container">
+      <a href="#basic">基本資料</a>
+      <a href="#awards">競賽與獲獎紀錄</a>
+      <a href="#clubs">社團經歷</a>
+      <a href="#courses">課程與專長</a>
+      <a href="#files">其他資料與檔案證明</a>
+    </div>
+  </nav>
+
   <div class="container">
     <header>
       <img class="avatar" src="林宏嘉_大頭照.jpg" alt="林宏嘉_大頭照" />
@@ -83,6 +130,7 @@
 
     <div class="grid">
       <main>
+<section id="basic">
 <section class="card">
   <h2>基本資料</h2>
   <dl>
@@ -110,22 +158,34 @@
 
   </dl>
 </section>
-
+</section>
+<section id="awards">
         <section class="card" style="margin-top:16px">
           <h2>競賽與獲獎紀錄 <small>(點擊選項查看證明)</small> </h2>
           <div class="controls">
-            <input type="search" id="q" placeholder="搜尋獲獎名稱或關鍵字" />
-            <select id="yearFilter">
+           <input type="search" id="q" placeholder="搜尋獲獎名稱或關鍵字" style="color:#222;" />
+             <select id="yearFilter" style="margin-left:8px; padding:6px; color:#071025;">
               <option value="all">全年份</option>
               <option>2025</option>
               <option>2024</option>
               <option>2023</option>
               <option value="none">收起</option>
-            </select>
+        </select>
+         <select id="categoryFilter" style="margin-left:8px; padding:6px; color:#071025;">
+          <option value="all">所有類別</option>
+          <option value="學術">學術</option>
+          <option value="榮譽">榮譽</option>
+          <option value="競技">競技</option>
+          <option value="語言">語言</option>
+          <option value="實習">實習</option>
+          <option value="才藝">才藝</option>
+          <option value="其他">其他</option>
+        </select>
           </div>
 
           <div class="award-list" id="awardList">
-            <article class="award" data-year="2025" data-title="台積電暑期實習傑出實習生獎 · 2025" data-desc="實習期間在PVD部門協助薄膜沉積製成缺陷改善improve yeild loss" data-img="award1.jpg">
+            <!-- 每一個 article 都要有 data-category（這裡我補上/統一） -->
+            <article class="award" data-year="2025" data-category="學術" data-title="台積電暑期實習傑出實習生獎 · 2025" data-desc="實習期間在PVD部門協助薄膜沉積製成缺陷改善improve yeild loss" data-img="award1.jpg">
               <div class="badge">學術</div>
               <div>
                 <h3>台積電 傑出實習生獎 · 2025</h3>
@@ -133,7 +193,7 @@
               </div>
             </article>
 
-            <article class="award" data-year="2025" data-title="TSMC F15B summer internship workshop 暑期專案 第二名 · 2024" data-desc="台積電暑期實習 個人專案 [P126 ECP hollow via defect improve - Utilizing AI Big Data] " data-img="award_tsmc_2.JPG">
+            <article class="award" data-year="2025" data-category="學術" data-title="TSMC F15B summer internship workshop 暑期專案 第二名 · 2024" data-desc="台積電暑期實習 個人專案 [P126 ECP hollow via defect improve - Utilizing AI Big Data]" data-img="award_tsmc_2.JPG">
               <div class="badge">學術</div>
               <div>
                 <h3>暑期專案 專題發表 第二名 · 2025</h3>
@@ -141,7 +201,7 @@
               </div>
             </article>
 
-            <article class="award" data-year="2025" data-title="國立臺灣大學 工學院學生利他獎 · 2025" data-desc="熱心服務發揮利他精神。" data-img="engineeri_award.JPG">
+            <article class="award" data-year="2025" data-category="榮譽" data-title="國立臺灣大學 工學院學生利他獎 · 2025" data-desc="熱心服務發揮利他精神。" data-img="engineeri_award.JPG">
               <div class="badge">榮譽</div>
               <div>
                 <h3>國立臺灣大學 工學院學生利他獎 · 2025</h3>
@@ -149,7 +209,7 @@
               </div>
             </article>
 
-            <article class="award" data-year="2025" data-title="TSMC 2025 DNA Summer Internship · 2025" data-desc="台積電暑期實習 結訓證書" data-img="award_tsmc_cirti.JPG">
+            <article class="award" data-year="2025" data-category="實習" data-title="TSMC 2025 DNA Summer Internship · 2025" data-desc="台積電暑期實習 結訓證書" data-img="award_tsmc_cirti.JPG">
               <div class="badge">實習</div>
               <div>
                 <h3>TSMC 2025 DNA Summer Internship · 2025</h3>
@@ -157,7 +217,7 @@
               </div>
             </article>
 
-            <article class="award" data-year="2024" data-title="系學會幹部嘉獎 · 2024" data-desc="擔任系學會副會長，組織系內活動並提升學生滿意度。" data-img="department_award_113.png">
+            <article class="award" data-year="2024" data-category="榮譽" data-title="系學會幹部嘉獎 · 2024" data-desc="擔任系學會副會長，組織系內活動並提升學生滿意度。" data-img="department_award_113.png">
               <div class="badge">榮譽</div>
               <div>
                 <h3>系學會幹部嘉獎 · 2024</h3>
@@ -165,7 +225,7 @@
               </div>
             </article>
 
-            <article class="award" data-year="2024" data-title="臺大全校運動會游泳競賽 · 2024" data-desc="男子組 個人仰式50公尺 第18名" data-img="award_swim_18.JPG">
+            <article class="award" data-year="2024" data-category="競技" data-title="臺大全校運動會游泳競賽 · 2024" data-desc="男子組 個人仰式50公尺 第18名" data-img="award_swim_18.JPG">
               <div class="badge">競技</div>
               <div>
                 <h3>113年 臺大全校運動會游泳競賽 · 2024</h3>
@@ -173,8 +233,7 @@
               </div>
             </article>
 
-
-            <article class="award" data-year="2024" data-title="臺大全校運動會游泳競賽 · 2024" data-desc="工科海洋系 游泳大隊接力400公尺 第四名" data-img="award_swim_4.JPG">
+            <article class="award" data-year="2024" data-category="競技" data-title="臺大全校運動會接力 · 2024" data-desc="工科海洋系 游泳大隊接力400公尺 第四名" data-img="award_swim_4.JPG">
               <div class="badge">競技</div>
               <div>
                 <h3>113年 臺大全校運動會游泳競賽 · 2024</h3>
@@ -182,31 +241,31 @@
               </div>
             </article>
 
-            <article class="award" data-year="2023" data-title="臺大111學年 校園馬拉松 · 2023" data-desc="男子組 完賽" data-img="Marathon_111.JPG">
+            <article class="award" data-year="2023" data-category="競技" data-title="臺大111學年 校園馬拉松 · 2023" data-desc="男子組 完賽" data-img="Marathon_111.JPG">
               <div class="badge">競技</div>
               <div>
                 <h3>111年 臺大校園馬拉松 · 2023</h3>
-                <p>游泳競賽</p>
+                <p>完賽</p>
               </div>
             </article>
 
-            <article class="award" data-year="2023" data-title="臺大112學年 校園馬拉松 · 2024" data-desc="男子組 完賽" data-img="Marathon_112.JPG">
+            <article class="award" data-year="2023" data-category="競技" data-title="臺大112學年 校園馬拉松 · 2024" data-desc="男子組 完賽" data-img="Marathon_112.JPG">
               <div class="badge">競技</div>
               <div>
                 <h3>112年 臺大校園馬拉松 · 2024</h3>
-                <p>游泳競賽</p>
+                <p>完賽</p>
               </div>
             </article>
 
-            <article class="award" data-year="2025" data-title="臺大113學年 校園馬拉松 · 2025" data-desc="男子組 完賽" data-img="Marathon_113.JPG">
+            <article class="award" data-year="2025" data-category="競技" data-title="臺大113學年 校園馬拉松 · 2025" data-desc="男子組 完賽" data-img="Marathon_113.JPG">
               <div class="badge">競技</div>
               <div>
                 <h3>113年 臺大校園馬拉松 · 2025</h3>
-                <p>游泳競賽</p>
+                <p>完賽</p>
               </div>
             </article>
 
-            <article class="award" data-year="2022" data-title="台中市110年度 畢業生市長獎 · 2022" data-desc="市長獎" data-img="Senior_high_graduate_award.JPG">
+            <article class="award" data-year="2022" data-category="學術" data-title="台中市110年度 畢業生市長獎 · 2022" data-desc="市長獎" data-img="Senior_high_graduate_award.JPG">
               <div class="badge">學術</div>
               <div>
                 <h3>110年 畢業生市長獎 · 2022</h3>
@@ -214,7 +273,7 @@
               </div>
             </article>
 
-            <article class="award" data-year="2022" data-title="TOEIC 英文檢定 · 2022" data-desc="TOEIC 740" data-img="TOEIC_740.JPG">
+            <article class="award" data-year="2022" data-category="語言" data-title="TOEIC 英文檢定 · 2022" data-desc="TOEIC 740" data-img="TOEIC_740.JPG">
               <div class="badge">語言</div>
               <div>
                 <h3>TOEIC 740 · 2022</h3>
@@ -222,7 +281,7 @@
               </div>
             </article>
 
-            <article class="award" data-year="2022" data-title="CEPT 中文檢定 · 2022" data-desc="CEPT 中級" data-img="CEPT_intermidiate.JPG">
+            <article class="award" data-year="2022" data-category="語言" data-title="CEPT 中文檢定 · 2022" data-desc="CEPT 中級" data-img="CEPT_intermidiate.JPG">
               <div class="badge">語言</div>
               <div>
                 <h3>CEPT 中級 · 2022</h3>
@@ -230,7 +289,7 @@
               </div>
             </article>
 
-            <article class="award" data-year="2022" data-title="河合鋼琴 檢定測驗 古典鋼琴9級 · 2022" data-desc="市長獎" data-img="Piano_classic9.JPG">
+            <article class="award" data-year="2022" data-category="才藝" data-title="古典鋼琴9級 · 2022" data-desc="河合鋼琴 檢定測驗 古典鋼琴9級" data-img="Piano_classic9.JPG">
               <div class="badge">才藝</div>
               <div>
                 <h3>古典鋼琴9級 · 2022</h3>
@@ -238,7 +297,7 @@
               </div>
             </article>
 
-            <article class="award" data-year="2022" data-title="PRAGUE GRADE EXAMINATION Jazz Piano Grade 8 · 2022" data-desc="爵士鋼琴8級" data-img="Piano_jazz8.JPG">
+            <article class="award" data-year="2022" data-category="才藝" data-title="爵士鋼琴8級 · 2022" data-desc="PRAGUE GRADE EXAMINATION Jazz Piano Grade 8" data-img="Piano_jazz8.JPG">
               <div class="badge">才藝</div>
               <div>
                 <h3>爵士鋼琴8級 · 2022</h3>
@@ -246,20 +305,22 @@
               </div>
             </article>
 
-            <article class="award" data-year="2022" data-title="熱心捐血 感謝狀 · 2022" data-desc="感謝狀" data-img="Blood_award.JPG">
+            <article class="award" data-year="2022" data-category="榮譽" data-title="熱心捐血 感謝狀 · 2022" data-desc="感謝狀" data-img="Blood_award.JPG">
               <div class="badge">榮譽</div>
               <div>
                 <h3>台中捐血中心 感謝狀 · 2022</h3>
                 <p>感謝狀</p>
               </div>
             </article>
-
           </div>
+
           <button id="toggleAwards" style="padding:8px 12px; border-radius:8px; border:none; background: linear-gradient(45deg, #00aaff, #1e90ff); color:#071025; cursor:pointer; margin-top:12px; box-shadow: 0 4px 8px rgba(0, 170, 255, 0.2); transition: background 0.3s ease;">
            顯示更多
           </button>
         </section>
+</section>
 
+<section id="clubs">
       <section class="card" style="margin-top:16px">
        <h2>社團經歷</h2>
         <img src="club_cirtificate_1.jpg" alt="社團經歷證明照片" style="max-width:100%;border-radius:8px;margin-bottom:12px" />
@@ -284,7 +345,9 @@
        </tbody>
     </table>
 </section>
+</section>
 
+<section id="courses">
 <section class="card" style="margin-top:16px">
   <h2>課程與專長</h2>
 
@@ -339,6 +402,7 @@
 </button>
 
 </section>
+</section>
 
 
 <!-- 新增 修課證明 -->
@@ -357,8 +421,9 @@
   </div>
 </div>
 
+<section id="files">
 <section class="card other-files" style="margin-top:16px">
-        <h2>其他資料</h2>
+        <h2>其他資料與檔案證明</h2>
         <ul>
           <li>
             About Me 自我介紹
@@ -402,7 +467,7 @@
           </li>
         </ul>
       </section>
-
+</section>
 
       </main>
 
@@ -450,10 +515,23 @@
 
   </div>
 
+  <br>
+<div class="card">
+  <h3>自傳</h3>
+    <p class="muted">
+      可點擊圖片放大觀看自傳
+    </p>
+  <img src="自傳截圖.jpg" 
+       alt="自傳截圖.jpg" 
+       class="zoomable" 
+       data-title="自傳"
+       style="width:100%; border-radius:8px; margin-top:12px; cursor:pointer;" />
+</div>
+
 </aside>
     </div>
 
-    <footer>© 林宏嘉 · 最後更新：2025-09-16</footer>
+    <footer>© 林宏嘉 · 最後更新：2025-09-18</footer>
   </div>
 
   <!-- 獎狀 Modal -->
@@ -488,6 +566,7 @@
   <script>
     const q=document.getElementById('q');
     const yearFilter=document.getElementById('yearFilter');
+    const categoryFilter = document.getElementById('categoryFilter');
     const awardList=document.getElementById('awardList');
     const toggleAwards = document.getElementById('toggleAwards');
     const modal=document.getElementById('modal');
@@ -495,92 +574,132 @@
     const modalDesc=document.getElementById('modalDesc');
     const modalImg=document.getElementById('modalImg');
     const closeBtn=document.getElementById('closeBtn');
+    
+    let expanded = false;
 
-function collapseAwards() {
-  const awards = Array.from(awardList.querySelectorAll('.award'));
-  awards.forEach((award, index) => {
-    award.style.display = (index < 3) ? 'flex' : 'none';
-  });
-  if (awards.length <= 3) {
-    toggleAwards.style.display = 'none';
-  } else {
-    toggleAwards.style.display = 'inline-block';
-    toggleAwards.textContent = '顯示更多';
-  }
-}
+    // refresh: 負責篩選 (關鍵字/年份/類別) 並且套用「只顯示前三筆（除非 expanded）」
+    function refresh() {
+      const kw = q.value.trim().toLowerCase();
+      const year = yearFilter.value;
+      const category = categoryFilter.value;
 
-// 頁面載入時先摺疊前三個
-collapseAwards();
+      const awards = Array.from(awardList.querySelectorAll('.award'));
 
-toggleAwards.addEventListener('click', () => {
-  const awards = Array.from(awardList.querySelectorAll('.award'));
-  const hidden = awards.filter(a => a.style.display === 'none');
-  if (hidden.length > 0) {
-    // 展開全部
-    awards.forEach(a => a.style.display = 'flex');
-    toggleAwards.textContent = '收起';
-  } else {
-    // 收回前三個
-    collapseAwards();
-  }
-});
+      // 找出所有符合條件的項目
+      const matches = awards.filter(it => {
+        const text = (it.textContent || '').toLowerCase();
+        const y = it.getAttribute('data-year') || '';
+        const c = it.getAttribute('data-category') || '';
 
-    function refresh(){
-      const kw=q.value.trim().toLowerCase();
-      const year=yearFilter.value;
-      Array.from(awardList.children).forEach(it=>{
-        const text=(it.textContent||'').toLowerCase();
-        const y=it.getAttribute('data-year')||'';
-        const match=(!kw||text.includes(kw))&&(year==='all'||y===year);
-        it.style.display=match?'flex':'none';
+        const matchKw = !kw || text.includes(kw);
+        const matchYear = (year === 'all' || y === year);
+        const matchCategory = (category === 'all' || c === category);
+
+        return matchKw && matchYear && matchCategory;
       });
+
+      // 先全部隱藏
+      awards.forEach(it => it.style.display = 'none');
+
+      if (!expanded) {
+        // 預設只顯示前三筆符合的
+        matches.slice(0, 3).forEach(it => it.style.display = 'flex');
+        // toggle 按鈕只在符合數 > 3 時顯示
+        if (matches.length > 3) {
+          toggleAwards.style.display = 'inline-block';
+          toggleAwards.textContent = '顯示更多';
+        } else {
+          toggleAwards.style.display = matches.length === 0 ? 'none' : 'none';
+          // 只有 1~3 筆，沒必要顯示按鈕
+        }
+      } else {
+        // 展開全部符合項目
+        matches.forEach(it => it.style.display = 'flex');
+        toggleAwards.style.display = matches.length > 3 ? 'inline-block' : 'none';
+        toggleAwards.textContent = '收起';
+      }
     }
-    q.addEventListener('input',refresh);
-    yearFilter.addEventListener('change',refresh);
 
-    awardList.addEventListener('click',e=>{
-      const card=e.target.closest('.award');
-      if(!card)return;
-      modalTitle.textContent=card.dataset.title;
-      modalDesc.textContent=card.dataset.desc;
-      modalImg.src=card.dataset.img;
-      modal.style.display='flex';
+    // 初始呼叫：收合前三筆
+    expanded = false;
+    refresh();
+
+    // 當搜尋 / 篩選改變時，回到收合狀態並 refresh
+    q.addEventListener('input', () => { expanded = false; refresh(); });
+    yearFilter.addEventListener('change', () => { expanded = false; refresh(); });
+    categoryFilter.addEventListener('change', () => { expanded = false; refresh(); });
+
+    // 顯示更多 按鈕
+    toggleAwards.addEventListener('click', () => {
+      expanded = !expanded;
+      refresh();
+      // 如果展開時，滾動到按鈕上方讓使用者看得到更多內容（可選）
+      if (expanded) toggleAwards.scrollIntoView({ behavior: 'smooth', block: 'center' });
     });
-    closeBtn.onclick=()=>modal.style.display='none';
-    modal.onclick=e=>{if(e.target===modal)modal.style.display='none'};
 
+    // 點擊 award 顯示 modal（共用 modal）
+    awardList.addEventListener('click', e => {
+      const card = e.target.closest('.award');
+      if (!card) return;
+      modalTitle.textContent = card.dataset.title || '';
+      modalDesc.textContent = card.dataset.desc || '';
+      modalImg.src = card.dataset.img || '';
+      modal.style.display = 'flex';
+    });
+
+    // 點擊可放大的圖片（右側自傳等）
+    document.querySelectorAll('.zoomable').forEach(img => {
+      img.addEventListener('click', () => {
+        modalImg.src = img.src;
+        modalTitle.innerText = img.dataset.title || '';
+        modal.style.display = 'flex';
+      });
+    });
+
+
+    // 關閉 modal
+    closeBtn.onclick = () => modal.style.display = 'none';
+    modal.onclick = e => { if (e.target === modal) modal.style.display = 'none'; };
+
+    // 修課 modal btn
     const proofBtn = document.getElementById('proofBtn');
     const proofModal = document.getElementById('proofModal');
     const proofClose = document.getElementById('proofClose');
-    proofBtn.onclick = () => proofModal.style.display = 'flex';
-    proofClose.onclick = () => proofModal.style.display = 'none';
-    proofModal.onclick = (e) => { if(e.target===proofModal) proofModal.style.display='none'; };
+    if (proofBtn && proofModal && proofClose) {
+      proofBtn.onclick = () => proofModal.style.display = 'flex';
+      proofClose.onclick = () => proofModal.style.display = 'none';
+      proofModal.onclick = (e) => { if (e.target === proofModal) proofModal.style.display = 'none'; };
+    }
 
+    // PDF preview
     const pdfModal = document.getElementById('pdfModal');
     const pdfViewer = document.getElementById('pdfViewer');
-    const pdfClose = pdfModal.querySelector('.close-btn');
+    const pdfClose = pdfModal ? pdfModal.querySelector('.close-btn') : null;
 
     document.querySelectorAll('.preview-btn').forEach(btn => {
       btn.addEventListener('click', () => {
         const file = btn.getAttribute('data-file');
+        if (!file) return;
         pdfViewer.src = file;
         pdfModal.style.display = 'flex';
       });
     });
-    pdfClose.addEventListener('click', () => {
-      pdfModal.style.display = 'none';
-      pdfViewer.src = '';
-    });
-    pdfModal.addEventListener('click', (e) => {
-      if(e.target === pdfModal) {
+    if (pdfClose) {
+      pdfClose.addEventListener('click', () => {
         pdfModal.style.display = 'none';
         pdfViewer.src = '';
-      }
-    });
+      });
+      pdfModal.addEventListener('click', (e) => {
+        if (e.target === pdfModal) {
+          pdfModal.style.display = 'none';
+          pdfViewer.src = '';
+        }
+      });
+    }
+
   </script>
 </body>
 </html>
-
 
 
 
