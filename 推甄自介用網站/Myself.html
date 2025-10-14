@@ -707,14 +707,15 @@
     modal.style.display = 'flex';
   });
 
-  // 點擊右側 zoomable 圖片
-  document.querySelectorAll('.zoomable').forEach(img => {
-    img.addEventListener('click', () => {
-      modalImg.src = img.src;
-      modalTitle.innerText = img.dataset.title || '';
-      modal.style.display = 'flex';
-    });
+// 點擊右側 zoomable 圖片
+document.querySelectorAll('.zoomable').forEach(img => {
+  img.addEventListener('click', () => {
+    modalImg.src = img.src;
+    modalTitle.innerText = img.dataset.title || '';
+    modalDesc.textContent = ''; // 
+    modal.style.display = 'flex';
   });
+});
 
   // 關閉圖片 modal
   closeBtn.onclick = () => modal.style.display = 'none';
@@ -765,6 +766,7 @@
 </script>
 </body>
 </html>
+
 
 
 
