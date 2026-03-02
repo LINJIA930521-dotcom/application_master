@@ -1,12 +1,10 @@
-<!-- 屬於我自己的網站 -->
 <!doctype html> 
 <html lang="zh-Hant">
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
   <title>林宏嘉 — 審查資料自設網站</title>
-    <!-- Google tag (gtag.js) -->
-  <script async src="https://www.googletagmanager.com/gtag/js?id=G-SQSS16WK22"></script>
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-SQSS16WK22"></script>
   <script>
     window.dataLayer = window.dataLayer || [];
     function gtag(){dataLayer.push(arguments);}
@@ -18,7 +16,8 @@
     body{margin:0;font-family: system-ui, "Noto Sans TC", sans-serif;background:#071025;color:#e6eef6;line-height:1.5}
     .container{max-width:980px;margin:36px auto;padding:20px}
     header{display:flex;gap:18px;align-items:center}
-    .avatar { width: 110px; height: 110px; border-radius: 16px; object-fit: cover; }
+    /* 修改處：將固定高度 110px 改為 auto，寬度維持 110px，這樣會依據圖片比例顯示直式 */
+    .avatar { width: 110px; height: auto; border-radius: 16px; object-fit: cover; }
     h1{margin:0;font-size:24px}
     .subtitle{color:var(--muted);font-size:14px;margin-top:6px}
     .grid{display:grid;grid-template-columns:1fr 360px;gap:20px;margin-top:22px}
@@ -93,7 +92,7 @@
 
 .controls input,
 .controls select {
-  color: #071025;           /* 深字 */
+  color: #071025;            /* 深字 */
   background-color: #f5f5f5; /* 淺背景 */
   border: 1px solid #ccc;
   border-radius: 6px;
@@ -119,7 +118,6 @@
 </head>
 <body>
 
-  <!-- 導覽列 -->
   <nav class="navbar">
     <div class="nav-container">
       <a href="#basic">基本資料</a>
@@ -355,7 +353,7 @@
           </div>
 
           <button id="toggleAwards" style="padding:8px 12px; border-radius:8px; border:none; background: linear-gradient(45deg, #00aaff, #1e90ff); color:#071025; cursor:pointer; margin-top:12px; box-shadow: 0 4px 8px rgba(0, 170, 255, 0.2); transition: background 0.3s ease;">
-           顯示更多
+            顯示更多
           </button>
         </section>
 </section>
@@ -364,8 +362,8 @@
       <section class="card" style="margin-top:16px">
        <h2>社團經歷</h2>
         <img src="club_cirtificate_1.jpg" alt="社團經歷證明照片" style="max-width:100%;border-radius:8px;margin-bottom:12px" />
-       <table>
-       <thead>
+        <table>
+        <thead>
     <tr>
      <th>學年期</th>
      <th>社團名稱</th>
@@ -448,7 +446,6 @@
 </section>
 
 
-<!-- 新增 修課證明 -->
 <div class="modal" id="proofModal">
   <div class="modal-content">
     <span class="close" id="proofClose">×</span>
@@ -523,7 +520,7 @@
             <button class="preview-btn" data-file="推甄名次證明書.jpg">預覽</button>
             <a href="推甄名次證明書.jpg" target="_blank">下載</a>
           </li>
-         <li>
+          <li>
             TOEIC英文檢定850分
             <button class="preview-btn" data-file="多益850成績單.JPG">預覽</button>
             <a href="多益850成績單.JPG" target="_blank">下載</a>
@@ -597,7 +594,6 @@
     <footer>© 林宏嘉 · 最後更新：2025-10-14</footer>
   </div>
 
-  <!-- 獎狀 Modal -->
   <div class="modal" id="modal">
     <div class="modal-content">
       <span class="close" id="closeBtn">×</span>
@@ -607,7 +603,6 @@
     </div>
   </div>
 
-  <!-- 修課證明 Modal -->
   <div class="modal" id="proofModal">
     <div class="modal-content">
       <span class="close" id="proofClose">×</span>
@@ -618,7 +613,6 @@
     </div>
   </div>
 
-  <!-- PDF 預覽 Modal -->
   <div class="modal pdf-modal" id="pdfModal">
     <div class="modal-content">
       <span class="close-btn">×</span>
@@ -626,7 +620,6 @@
     </div>
   </div>
 
-  <!-- 圖片 Modal -->
   <div id="imgModal" class="modal">
     <span id="imgClose" class="close-btn">&times;</span>
     <img id="modalImg" />
@@ -766,16 +759,3 @@ document.querySelectorAll('.zoomable').forEach(img => {
 </script>
 </body>
 </html>
-
-
-
-
-
-
-
-
-
-
-
-
-
