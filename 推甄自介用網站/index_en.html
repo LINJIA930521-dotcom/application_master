@@ -162,26 +162,37 @@
   <h2>Basic Information</h2>
   
   <style>
-    /* 針對 Basic 區塊的分隔線與間距設定 */
     .info-list {
       display: flex;
       flex-direction: column;
       margin: 0;
+      padding: 0;
+      width: 100%; 
     }
     .info-row {
       display: grid;
-      grid-template-columns: 120px 1fr; /* 左邊標題 120px，右邊自適應 */
+      grid-template-columns: 120px 1fr; 
       gap: 16px;
-      padding: 14px 0; /* 上下留白讓畫面呼吸 */
-      border-bottom: 1px solid rgba(255, 255, 255, 0.08); /* 淺色的分隔線 */
-      align-items: start; /* 讓文字對齊頂部，多行文字時更好看 */
+      padding: 14px 0; 
+      border-bottom: 1px solid rgba(255, 255, 255, 0.08); 
+      width: 100%; 
+      text-align: left; 
+      align-items: start;
     }
     .info-row:last-child {
-      border-bottom: none; /* 最後一項不加底線 */
+      border-bottom: none; 
+    }
+    .info-row dt, .info-row dd {
+      margin: 0;
+      text-align: left; 
+    }
+    .info-row dt {
+      color: var(--muted);
+      font-size: 13px;
     }
   </style>
 
-  <dl class="info-list">
+  <div class="info-list">
     
     <div class="info-row">
       <dt>Birth</dt>
@@ -230,7 +241,7 @@
       <dd>Semiconductors, 2D Materials, Optics, Electronic Circuits & Electromagnetics, Programming, Control Systems</dd>
     </div>
 
-  </dl>
+  </div>
 </section>
 </section>
 <section id="awards">
