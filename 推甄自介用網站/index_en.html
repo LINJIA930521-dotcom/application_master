@@ -160,34 +160,75 @@
 <section id="basic">
 <section class="card">
   <h2>Basic Information</h2>
-  <dl>
-    <dt>Birth</dt><dd>May 21, 2004 / Taiwan</dd>
-    <dt>Education</dt>
-    <dd>
-      National Taiwan University - Graduate Institute of Photonics and Optoelectronics (M.S. Student)<br>
-      National Taiwan University - Dept. of Engineering Science and Ocean Engineering (B.S.)<br>
-      National Taiwan Univ. of Science and Technology - Bachelor Degree Program of Intellectual Property Rights (Minor)
-    </dd>
+  
+  <style>
+    /* 針對 Basic 區塊的分隔線與間距設定 */
+    .info-list {
+      display: flex;
+      flex-direction: column;
+      margin: 0;
+    }
+    .info-row {
+      display: grid;
+      grid-template-columns: 120px 1fr; /* 左邊標題 120px，右邊自適應 */
+      gap: 16px;
+      padding: 14px 0; /* 上下留白讓畫面呼吸 */
+      border-bottom: 1px solid rgba(255, 255, 255, 0.08); /* 淺色的分隔線 */
+      align-items: start; /* 讓文字對齊頂部，多行文字時更好看 */
+    }
+    .info-row:last-child {
+      border-bottom: none; /* 最後一項不加底線 */
+    }
+  </style>
+
+  <dl class="info-list">
     
-    <dt>Programs</dt>
-    <dd>TSMC Semiconductor Program<br>
+    <div class="info-row">
+      <dt>Birth</dt>
+      <dd>May 21, 2004 / Taiwan</dd>
+    </div>
+    
+    <div class="info-row">
+      <dt>Education</dt>
+      <dd>
+        National Taiwan University - Graduate Institute of Photonics and Optoelectronics (M.S. Student)<br>
+        National Taiwan University - Dept. of Engineering Science and Ocean Engineering (B.S.)<br>
+        National Taiwan Univ. of Science and Technology - Bachelor Degree Program of Intellectual Property Rights (Minor)
+      </dd>
+    </div>
+    
+    <div class="info-row">
+      <dt>Programs</dt>
+      <dd>
+        TSMC Semiconductor Program<br>
         TSMC Advanced Circuit Program
-</dd>
+      </dd>
+    </div>
     
-    <dt>Specialization</dt>
-    <dd>College of Engineering - Optomechatronics</dd>
+    <div class="info-row">
+      <dt>Specialization</dt>
+      <dd>College of Engineering - Optomechatronics</dd>
+    </div>
 
-    <dt>Internship</dt>
-    <dd>2025 TSMC DNA Summer Internship (NTU Mentorship Program)</dd>
+    <div class="info-row">
+      <dt>Internship</dt>
+      <dd>2025 TSMC DNA Summer Internship (NTU Mentorship Program)</dd>
+    </div>
 
-    <dt>TOEIC</dt>
-    <dd>850</dd>
+    <div class="info-row">
+      <dt>TOEIC</dt>
+      <dd>850</dd>
+    </div>
 
-    <dt>Contact</dt>
-    <dd>r15941017@ntu.edu.tw · +886-988-747-804</dd>
+    <div class="info-row">
+      <dt>Contact</dt>
+      <dd>r15941017@ntu.edu.tw · +886-988-747-804</dd>
+    </div>
 
-    <dt>Skills</dt>
-    <dd>Semiconductors, 2D Materials, Optics, Electronic Circuits & Electromagnetics, Programming, Control Systems</dd>
+    <div class="info-row">
+      <dt>Specialty</dt>
+      <dd>Semiconductors, 2D Materials, Optics, Electronic Circuits & Electromagnetics, Programming, Control Systems</dd>
+    </div>
 
   </dl>
 </section>
